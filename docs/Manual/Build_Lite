@@ -14,6 +14,7 @@ $ make
 $ make check   
 $ make install
 ```
+
 2. 编译模型转换器
 运行tools目录下build_lite.sh，编译完成后，会在output目录下生成generator文件夹
 
@@ -36,10 +37,12 @@ $ sh gen_code.sh -a 1 -m /home/Anakin/mobilenet.anakin.bin -n mobilenet -o ../..
 
 ###测试模型(可选)
 1. 使用adb push将tools/anakin_lite/output/unit_test目录下生成的test_lite_model和模型`*.bin`拷贝到手机目录data/local/tmp
+
 ```bash
 $ adb push tools/anakin_lite/output/unit_test/test_lite_model data/local/tmp 
 $ adb push tools/anakin_lite/*.bin data/local/tmp 
 ```
+
 2. 使用adb shell命令运行test_lite_model，用法为./test_lite_model <模型文件> <batch_size> <预热次数> <执行次数> <大小核> <线程数> ，大小核参数：0代表使用大核，1代表使用小核心。
 如测试model.bin，batch_size=1，预热十次，测试二十次，使用大核，四线程
 ```bash
